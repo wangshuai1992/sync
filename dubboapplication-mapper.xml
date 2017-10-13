@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wedoctor.health.card.cloud.monitor.dal.dubbo.mapper.DubboApplicationMapper">
+    <!--
+                预估三年内数据量不超过100，访问频繁，可采用缓存
+            -->
+    <resultMap id="baseResult" type="dubboApplicationDO">
+        <result property="id" column="id"/>
+        <result property="gmtCreated" column="gmt_created"/>
+        <result property="gmtModified" column="gmt_modified"/>
+        <result property="isDeleted" column="is_deleted"/>
+        <result property="remark" column="remark"/>
+        <result property="appName" column="app_name"/>
+        <result property="appCnName" column="app_cnname"/>
+        <result property="appType" column="app_type"/>
+    </resultMap>
+
+    <sql id="column_List">
+        id,
+        gmt_created,
+        gmt_modified,
+        is_deleted,
+        remark,
+        app_name,
+        app_cnname,
+        app_type
+    </sql>
+
+    <!--table insert-->
+    <insert id="insert" parameterType="dubboApplicationDO" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO dubbo_application (
+        <include refid="column_List"/>
+        ) VALUES (
+        #{id},
+        now(),
+        now(),
+        0,
+        #{remark},
+        #{appName},
+        #{appCnName},
+        #{appType}
+        )
+    </insert>
+
+    <insert id="batchInsert" parameterType="list" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO dubbo_application (
+        <include refid="column_List"/>
+        ) VALUES
+        <foreach collection="list" item="apps" separator=",">
+            (
+            #{apps.id},
+            now(),
+            now(),
+            0,
+            #{apps.remark},
+            #{apps.appName},
+            #{apps.appCnName},
+            #{apps.appType}
+            )
+        </foreach>
+    </insert>
+    
+    <!-- 更新 -->
+	<update id="update" parameterType="dubboApplicationDO">
+		UPDATE dubbo_application
+		<set>
+			<if test="remark != null and remark != ''">
+				remark = #{remark},
+			</if>
+			<if test="appName != null and appName != ''">
+				app_name = #{appName},
+			</if>
+			<if test="appCnName != null and appCnName != ''">
+				app_cnname = #{appCnName},
+			</if>
+			<if test="appType != null and appType != ''">
+				app_type = #{appType},
+			</if>
+			gmt_modified = now()
+		</set>
+		WHERE id = #{id}
+	</update>
+
+    <!-- delete_by_id -->
+    <update id="deleteById" parameterType="java.lang.Long">
+        UPDATE dubbo_application
+        SET gmt_modified = now(), is_deleted = 1
+        WHERE id = #{id}
+    </update>
+
+    <update id="deleteByIds" parameterType="java.util.List">
+        UPDATE dubbo_application SET gmt_modified = now(),is_deleted = 1
+        WHERE id in
+        <foreach collection="list" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </update>
+
+    <!--find_by_id-->
+    <select id="findById" resultMap="baseResult" parameterType="java.lang.Long">
+        SELECT
+        <include refid="column_List"/>
+        FROM dubbo_application
+        WHERE is_deleted = 0
+        AND id = #{id}
+    </select>
+    
+    <!--find_by_name-->
+    <select id="findByAppName" resultMap="baseResult" parameterType="java.lang.String">
+        SELECT
+        <include refid="column_List"/>
+        FROM dubbo_application
+        WHERE is_deleted = 0
+        AND app_name = #{name}
+    </select>
+
+    <!-- query_by_condition
+     isDeleted必输，一般输入appName
+     -->
+    <sql id="query_condition">
+        <where>
+            <if test="id != null and id != '' ">
+                AND id = #{id}
+            </if>
+            <if test="isDeleted != null ">
+                AND is_deleted = #{isDeleted}
+            </if>
+            <if test="remark != null and remark != '' ">
+                AND remark = #{remark}
+            </if>
+            <if test="appName != null and appName != '' ">
+                AND app_name = #{appName}
+            </if>
+            <if test="appCnName != null and appCnName != '' ">
+                AND app_cnname = #{appCnName}
+            </if>
+            <if test="appType != null and appType != '' ">
+                AND app_type = #{appType}
+            </if>
+        </where>
+    </sql>
+
+    <select id="pageCount" parameterType="dubboApplicationQuery" resultType="java.lang.Integer">
+        SELECT count(*) FROM dubbo_application
+        <include refid="query_condition"/>
+    </select>
+
+    <select id="pageQuery" resultMap="baseResult" parameterType="dubboApplicationQuery">
+        SELECT
+        <include refid="column_List"/>
+        FROM dubbo_application
+        <include refid="query_condition"/>
+        <![CDATA[
+			ORDER BY id DESC
+		]]>
+        LIMIT #{startPos},#{pageSize}
+    </select>
+
+    <select id="fullQuery" resultMap="baseResult" parameterType="dubboApplicationQuery">
+        SELECT
+        <include refid="column_List"/>
+        FROM dubbo_application
+        <include refid="query_condition"/>
+    </select>
+
+    <select id="findSyncableDataById" resultType="map" parameterType="java.lang.Long">
+        SELECT
+        <include refid="column_List"/>
+        FROM dubbo_application
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insertSyncableData" parameterType="map" useGeneratedKeys="true" keyProperty="id" >
+        INSERT INTO dubbo_application (
+          <include refid="column_List"/>
+        ) VALUES (
+            null,
+            now(),
+            now(),
+            #{is_deleted},
+            #{remark},
+            #{app_name},
+            #{app_cnname},
+            #{app_type}
+        )
+    </insert>
+
+    <update id="updateSyncableData" parameterType="map">
+        UPDATE dubbo_application
+        <set>
+            <if test="remark != null and remark != ''">
+                remark = #{remark},
+            </if>
+            <if test="app_name != null and app_name != ''">
+                app_name = #{app_name},
+            </if>
+            <if test="app_cnname != null and app_cnname != ''">
+                app_cnname = #{app_cnname},
+            </if>
+            <if test="app_type != null and app_type != ''">
+                app_type = #{app_type},
+            </if>
+            <if test="is_deleted != null ">
+                is_deleted = #{is_deleted},
+            </if>
+            gmt_modified = now()
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteSyncableDataById" parameterType="java.lang.Long">
+        DELETE FROM dubbo_application
+        WHERE id = #{id}
+    </delete>
+
+</mapper>
