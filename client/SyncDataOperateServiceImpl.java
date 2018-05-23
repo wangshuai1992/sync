@@ -1,4 +1,4 @@
-package com.wedoctor.health.card.cloud.sync.client.service.impl;
+package com.wangshuai.health.card.cloud.sync.client.service.impl;
 
 import java.util.Map;
 
@@ -8,13 +8,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.wedoctor.health.card.cloud.common.dto.ResponseDTO;
-import com.wedoctor.health.card.cloud.common.enums.ExceptionEnum;
-import com.wedoctor.health.card.cloud.common.mapper.SyncableMapper;
-import com.wedoctor.health.card.cloud.common.utils.SpringUtil;
-import com.wedoctor.health.card.cloud.config.share.dto.MapperConfigDTO;
-import com.wedoctor.health.card.cloud.config.share.service.MapperConfigService;
-import com.wedoctor.health.card.cloud.sync.share.service.SyncDataOperateService;
+import com.wangshuai.health.card.cloud.common.dto.ResponseDTO;
+import com.wangshuai.health.card.cloud.common.enums.ExceptionEnum;
+import com.wangshuai.health.card.cloud.common.mapper.SyncableMapper;
+import com.wangshuai.health.card.cloud.common.utils.SpringUtil;
+import com.wangshuai.health.card.cloud.config.share.dto.MapperConfigDTO;
+import com.wangshuai.health.card.cloud.config.share.service.MapperConfigService;
+import com.wangshuai.health.card.cloud.sync.share.service.SyncDataOperateService;
 
 /**
  * @Type SyncOperateServiceImpl

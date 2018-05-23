@@ -1,20 +1,13 @@
-/*
- * Copyright (c) 2001-2017 GuaHao.com Corporation Limited. All rights reserved. 
- * This software is the confidential and proprietary information of GuaHao Company. 
- * ("Confidential Information"). 
- * You shall not disclose such Confidential Information and shall use it only 
- * in accordance with the terms of the license agreement you entered into with GuaHao.com.
- */
-package com.wedoctor.health.card.cloud.sync.client.utils;
+package com.wangshuai.health.card.cloud.sync.client.utils;
 
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.wedoctor.health.card.cloud.common.dataobject.BaseDO;
-import com.wedoctor.health.card.cloud.common.mapper.SyncableMapper;
-import com.wedoctor.health.card.cloud.sync.share.dto.CloudSyncDTO;
-import com.wedoctor.health.card.cloud.sync.share.service.CollectSyncDataService;
+import com.wangshuai.health.card.cloud.common.dataobject.BaseDO;
+import com.wangshuai.health.card.cloud.common.mapper.SyncableMapper;
+import com.wangshuai.health.card.cloud.sync.share.dto.CloudSyncDTO;
+import com.wangshuai.health.card.cloud.sync.share.service.CollectSyncDataService;
 import io.codis.jodis.CodisAgent;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;

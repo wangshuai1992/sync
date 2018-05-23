@@ -1,13 +1,6 @@
-/*
- * Copyright (c) 2001-2017 GuaHao.com Corporation Limited. All rights reserved. 
- * This software is the confidential and proprietary information of GuaHao Company. 
- * ("Confidential Information"). 
- * You shall not disclose such Confidential Information and shall use it only 
- * in accordance with the terms of the license agreement you entered into with GuaHao.com.
- */
-package com.wedoctor.health.card.cloud.sync.client.aspect;
+package com.wangshuai.health.card.cloud.sync.client.aspect;
 
-import com.wedoctor.health.card.cloud.sync.client.utils.SyncCollectUtil;
+import com.wangshuai.health.card.cloud.sync.client.utils.SyncCollectUtil;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
@@ -31,14 +24,14 @@ public class OperateCollectAspect {
     @Resource
     private SyncCollectUtil syncCollectUtil;
 
-    @Around("execution(* com.wedoctor.health.card.cloud.*.manager.*.impl.*.*(..)) || " +
-            "execution(* com.wedoctor.health.card.cloud.*.biz.*.*.impl.*.*(..))")
+    @Around("execution(* com.wangshuai.health.card.cloud.*.manager.*.impl.*.*(..)) || " +
+            "execution(* com.wangshuai.health.card.cloud.*.biz.*.*.impl.*.*(..))")
     public Object aroundManager(ProceedingJoinPoint pjp) {
         return syncCollectUtil.doTransaction(pjp);
     }
 
-    @After("execution(* com.wedoctor.health.card.cloud.*.dal.*.mapper.*.*(..)) || " +
-            "execution(* com.wedoctor.health.card.cloud.*.biz.dal.*.mapper.*.*(..))")
+    @After("execution(* com.wangshuai.health.card.cloud.*.dal.*.mapper.*.*(..)) || " +
+            "execution(* com.wangshuai.health.card.cloud.*.biz.dal.*.mapper.*.*(..))")
     public void afterMapper(JoinPoint point) {
         syncCollectUtil.doCollect(point);
     }

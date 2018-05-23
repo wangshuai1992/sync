@@ -1,10 +1,4 @@
-package com.wedoctor.health.card.cloud.sync.client.service.impl;/*
- * Copyright (c) 2001-2017 GuaHao.com Corporation Limited. All rights reserved. 
- * This software is the confidential and proprietary information of GuaHao Company. 
- * ("Confidential Information"). 
- * You shall not disclose such Confidential Information and shall use it only 
- * in accordance with the terms of the license agreement you entered into with GuaHao.com.
- */
+package com.wangshuai.health.card.cloud.sync.client.service.impl;
 
 import java.util.Map;
 
@@ -15,13 +9,13 @@ import org.springframework.stereotype.Component;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.fastjson.JSON;
-import com.wedoctor.health.card.cloud.common.dto.ResponseDTO;
-import com.wedoctor.health.card.cloud.common.enums.ExceptionEnum;
-import com.wedoctor.health.card.cloud.common.mapper.SyncableMapper;
-import com.wedoctor.health.card.cloud.common.utils.SpringUtil;
-import com.wedoctor.health.card.cloud.config.share.dto.MapperConfigDTO;
-import com.wedoctor.health.card.cloud.config.share.service.MapperConfigService;
-import com.wedoctor.health.card.cloud.sync.share.service.SyncDataQueryService;
+import com.wangshuai.health.card.cloud.common.dto.ResponseDTO;
+import com.wangshuai.health.card.cloud.common.enums.ExceptionEnum;
+import com.wangshuai.health.card.cloud.common.mapper.SyncableMapper;
+import com.wangshuai.health.card.cloud.common.utils.SpringUtil;
+import com.wangshuai.health.card.cloud.config.share.dto.MapperConfigDTO;
+import com.wangshuai.health.card.cloud.config.share.service.MapperConfigService;
+import com.wangshuai.health.card.cloud.sync.share.service.SyncDataQueryService;
 
 /**
  * TODO

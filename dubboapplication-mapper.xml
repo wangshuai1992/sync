@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.wedoctor.health.card.cloud.monitor.dal.dubbo.mapper.DubboApplicationMapper">
+<mapper namespace="com.wangshuai.health.card.cloud.monitor.dal.dubbo.mapper.DubboApplicationMapper">
     <!--
                 预估三年内数据量不超过100，访问频繁，可采用缓存
             -->

@@ -1,6 +1,6 @@
-package com.wedoctor.health.card.cloud.monitor.dal.dubbo.query;
+package com.wangshuai.health.card.cloud.monitor.dal.dubbo.query;
 
-import com.wedoctor.health.card.cloud.common.query.PageQuery;
+import com.wangshuai.health.card.cloud.common.query.PageQuery;
 
 /**
  * 

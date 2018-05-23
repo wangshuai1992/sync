@@ -1,18 +1,11 @@
-/*
- * Copyright (c) 2001-2017 GuaHao.com Corporation Limited. All rights reserved. 
- * This software is the confidential and proprietary information of GuaHao Company. 
- * ("Confidential Information"). 
- * You shall not disclose such Confidential Information and shall use it only 
- * in accordance with the terms of the license agreement you entered into with GuaHao.com.
- */
-package com.wedoctor.health.card.cloud.sync.client.dubbo;
+package com.wangshuai.health.card.cloud.sync.client.dubbo;
 
 import com.alibaba.dubbo.config.ApplicationConfig;
 import com.alibaba.dubbo.config.ProtocolConfig;
 import com.alibaba.dubbo.config.RegistryConfig;
 import com.alibaba.dubbo.config.ServiceConfig;
-import com.wedoctor.health.card.cloud.sync.share.service.SyncDataOperateService;
-import com.wedoctor.health.card.cloud.sync.share.service.SyncDataQueryService;
+import com.wangshuai.health.card.cloud.sync.share.service.SyncDataOperateService;
+import com.wangshuai.health.card.cloud.sync.share.service.SyncDataQueryService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 

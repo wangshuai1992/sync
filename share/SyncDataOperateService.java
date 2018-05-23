@@ -1,8 +1,8 @@
-package com.wedoctor.health.card.cloud.sync.share.service;
+package com.wangshuai.health.card.cloud.sync.share.service;
 
 import java.util.Map;
 
-import com.wedoctor.health.card.cloud.common.dto.ResponseDTO;
+import com.wangshuai.health.card.cloud.common.dto.ResponseDTO;
 
 /**
  * @Type SyncOperateService

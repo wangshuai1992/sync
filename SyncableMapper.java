@@ -1,10 +1,4 @@
-package com.wedoctor.health.card.cloud.common.mapper;/*
- * Copyright (c) 2001-2017 GuaHao.com Corporation Limited. All rights reserved. 
- * This software is the confidential and proprietary information of GuaHao Company. 
- * ("Confidential Information"). 
- * You shall not disclose such Confidential Information and shall use it only 
- * in accordance with the terms of the license agreement you entered into with GuaHao.com.
- */
+package com.wangshuai.health.card.cloud.common.mapper;
 
 import java.util.Map;
 
